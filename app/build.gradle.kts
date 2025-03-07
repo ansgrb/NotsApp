@@ -71,8 +71,6 @@ dependencies {
     implementation(libs.hilt.compiler)
 //    kapt(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)  // For Jetpack Compose integration
-
-    implementation(libs.navigation.compose)
 }
 
 //kapt {

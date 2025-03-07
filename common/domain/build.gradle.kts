@@ -34,6 +34,10 @@ android {
 
 dependencies {
 
+    // The following dependencies are for the common modules
+    implementation(project(":common:framework"))
+    implementation(project(":common:data"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
