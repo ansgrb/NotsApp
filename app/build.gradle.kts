@@ -41,6 +41,16 @@ android {
 
 dependencies {
 
+    // The following dependencies are for the feature modules
+    implementation(project(":feature:chat"))
+    implementation(project(":feature:conversations"))
+    implementation(project(":feature:create_chat"))
+
+    // The following dependencies are for the common modules
+    implementation(project(":common:framework"))
+    implementation(project(":common:data"))
+
+    // The following dependencies are for the app module
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -56,4 +66,12 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.hilt.android)
+//    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)  // For Jetpack Compose integration
 }
+
+//kapt {
+//    correctErrorTypes = true
+//}
