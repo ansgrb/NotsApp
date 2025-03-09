@@ -21,20 +21,21 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
+import dev.ansgrb.chat.ui.ChatScreen
 import dev.ansgrb.conversations.ui.ConversationsListScreen
 import dev.ansgrb.framework.navigation.NavRoutes
-
 
 @Composable
 fun MainNavigation(navController: NavHostController) {
 
-    NavHost (
+    NavHost(
         navController,
         startDestination = NavRoutes.ConversationsList
     ) {
         addConversationsList(navController)
-        addNewConversation(navController)
+//        addNewConversation(navController)
         addChat(navController)
     }
 }
@@ -56,10 +57,24 @@ private fun NavGraphBuilder.addConversationsList(navController: NavHostControlle
     }
 }
 
-private fun NavGraphBuilder.addNewConversation(navController: NavHostController) {
-    // TODO: Add NewConversationScreen
-}
+//private fun NavGraphBuilder.addNewConversation(navController: NavHostController) {
+//    composable(NavRoutes.NewConversation) {
+//        CreateConversationScreen(
+//            onCreateConversation = {
+//            navController.navigate(NavRoutes.Chat)
+//            }
+//        )
+//    }
+//}
 
 private fun NavGraphBuilder.addChat(navController: NavHostController) {
-    // TODO: Add ChatScreen
+    composable(
+        route = NavRoutes.Chat,
+//        arguments = listOf(navArgument(NavRoutes.ChatArgs.ChatId) {
+//            type = NavType.StringType
+//        })
+    ) { backStackEntry ->
+        val chatId = backStackEntry.arguments?.getString(NavRoutes.ChatArgs.ChatId)
+        ChatScreen(chatId = chatId, onBack = { navController.popBackStack() })
+    }
 }
