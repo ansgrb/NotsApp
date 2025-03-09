@@ -36,7 +36,6 @@ dependencies {
 
     // The following dependencies are for the common modules
     implementation(project(":common:framework"))
-    implementation(project(":common:data"))
     implementation(project(":common:domain"))
 
     implementation(libs.androidx.core.ktx)

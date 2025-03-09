@@ -37,6 +37,12 @@ android {
     buildFeatures {
         compose = true
     }
+    packaging {
+        resources {
+            // Exclude duplicate files from Dagger/Hilt
+            excludes += "META-INF/gradle/incremental.annotation.processors"
+        }
+    }
 }
 
 dependencies {

@@ -16,13 +16,48 @@
  */
 package dev.ansgrb.conversations.ui
 
+import android.annotation.SuppressLint
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import dev.ansgrb.conversations.R
 
+@OptIn(ExperimentalMaterial3Api::class)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ConversationsListScreen(
     onNewConversationClick: () -> Unit,
     onConversationClick: (chatId: String) -> Unit
 ) {
-    //TODO Implement ConversationsListScreen
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.conversations_list_title)) },
+                actions = {
+                    IconButton(onClick = onNewConversationClick) {
+                        Icon(Icons.Rounded.Menu, contentDescription = "Menu")
+                    }
+                }
+            )
+        },
+        bottomBar = {/* BottomBar */},
+        floatingActionButton = {/* FAB */}
+    ){
+        /* ConversationsList */
+    }
 }
 
+
+@Preview
+@Composable
+fun ConversationsListScreenPreview() {
+    ConversationsListScreen({}, {})
+}
