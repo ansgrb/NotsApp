@@ -73,8 +73,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation(libs.navigation.compose)
     implementation(libs.hilt.android)
-    implementation(libs.hilt.compiler)
 //    kapt(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)  // For Jetpack Compose integration
 }

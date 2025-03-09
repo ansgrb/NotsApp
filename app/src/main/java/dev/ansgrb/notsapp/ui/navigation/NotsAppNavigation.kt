@@ -17,21 +17,49 @@
 package dev.ansgrb.notsapp.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dev.ansgrb.conversations.ui.ConversationsListScreen
+import dev.ansgrb.framework.navigation.NavRoutes
 
 
 @Composable
-fun NotsAppNavigation() {
-    val navController = rememberNavController()
+fun MainNavigation(navController: NavHostController) {
 
-    NavHost(
-        navController = navController,
-        startDestination = "start_screen"
+    NavHost (
+        navController,
+        startDestination = NavRoutes.ConversationsList
     ) {
-        composable("start_screen") {
-            //TODO: Implement start screen composable
-        }
+        addConversationsList(navController)
+        addNewConversation(navController)
+        addChat(navController)
     }
+}
+
+private fun NavGraphBuilder.addConversationsList(navController: NavHostController) {
+    composable(NavRoutes.ConversationsList) {
+        ConversationsListScreen(
+            onNewConversationClick = {
+                navController.navigate(
+                    NavRoutes.NewConversation
+                )
+            },
+            onConversationClick = { chatId ->
+                navController.navigate(
+                    NavRoutes.Chat.replace("{chatId}", chatId)
+                )
+            }
+        )
+    }
+}
+
+private fun NavGraphBuilder.addNewConversation(navController: NavHostController) {
+    // TODO: Add NewConversationScreen
+}
+
+private fun NavGraphBuilder.addChat(navController: NavHostController) {
+    // TODO: Add ChatScreen
 }

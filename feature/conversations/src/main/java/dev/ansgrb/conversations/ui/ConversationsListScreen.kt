@@ -56,8 +56,12 @@ fun ConversationsListScreen(
 }
 
 
-@Preview
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+    name = "Conversations List Screen"
+)
 @Composable
-fun ConversationsListScreenPreview() {
+private fun ConversationsListScreenPreview() {
     ConversationsListScreen({}, {})
 }

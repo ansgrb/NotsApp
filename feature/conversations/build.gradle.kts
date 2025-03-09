@@ -30,6 +30,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    packaging {
+        resources {
+            // Exclude duplicate files from Dagger/Hilt
+            excludes += "META-INF/gradle/incremental.annotation.processors"
+        }
+    }
 }
 
 dependencies {
@@ -56,4 +62,8 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.ui.tooling.preview)  // For previews
+    // Enable interactive previews (debug only)
+    debugImplementation(libs.androidx.ui.tooling)
+
 }
