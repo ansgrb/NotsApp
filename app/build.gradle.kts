@@ -77,6 +77,7 @@ dependencies {
     implementation(libs.hilt.android)
 //    kapt(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)  // For Jetpack Compose integration
+    implementation(libs.coil.compose)
 }
 
 //kapt {
